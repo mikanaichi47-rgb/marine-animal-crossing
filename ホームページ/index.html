@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>マリンワールド × どうぶつの森</title>
+<style> body { background-image: url("img/jellyfish5.jpg"); background-size: cover; background-position: center top; background-repeat: no-repeat; background-attachment: fixed; color: #000; } 
+#cursorImg {
+  position: absolute;
+  width: 60px;             /* サイズは自由に調整してOK */
+  pointer-events: none;    /* クリックを邪魔しない */
+  z-index: 9999;           /* 最前面に表示 */
+}
+.button-ac {
+   background-color: #4fc3f7;
+   border: none;
+   padding: 10px 20px;
+   margin: 5px;
+   border-radius: 12px;
+   color: white;
+   font-size: 16px;
+   font-weight: bold;
+   cursor: pointer;
+   box-shadow: 0 4px 0 #0288d1;
+   transition: 0.2s;
+ }
+
+ .button-ac:hover {
+   background-color: #81d4fa;
+   transform: translateY(-3px);
+   box-shadow: 0 6px 0 #0277bd;
+ }
+
+
+ .button-ac:active {
+   transform: translateY(2px);
+   box-shadow: 0 2px 0 #01579b;
+ }
+</style>
+</head>
+ 
+<body onLoad="Clock1();scroll_msg();">
+
+<img id="cursorImg" src="img/cursor_rakko1.jpg">
+
+
+ 
+<script>
+// ページ読み込み時のメッセージ
+window.alert("マリンワールド × どうぶつの森コラボ　レポートサイトへようこそ！");
+ 
+// 時計
+function Clock1() {
+  var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth() + 1;
+  var da = d.getDate();
+  var h = d.getHours();
+  var mi = d.getMinutes();
+  var s = d.getSeconds();
+  if(m<10){m="0"+m}
+  if(da<10){da="0"+da}
+  if(mi<10){mi="0"+mi}
+  if(s<10){s="0"+s}
+  document.myclockform.clock.value =
+    y+"年"+m+"月"+da+"日 "+h+"時"+mi+"分"+s+"秒";
+  setTimeout(Clock1,1000);
+}
+ 
+// スクロールメッセージ
+msg0="マリンワールド × どうぶつの森 　海の生きもの　ふれあい展　コラボフォトレポート　";
+msg1="写真はすべて現地で撮影したものです　";
+msg2="公式サイトはこちら→ https://marine-world.jp/　";
+msg = msg0 + msg1 + msg2;
+ 
+function scroll_msg() {
+  msg = msg.substring(2) + msg.substring(0,2);
+  document.f_scroll.t_scroll.value = msg;
+  setTimeout(scroll_msg, 200);
+}
+
+
+ 
+// おみくじ（どうぶつの森風）
+function omikuji() {
+  var list = [
+    "大吉：しずえさんが今日のあなたを応援しています！",
+    "中吉：たぬきちがニコニコしています。いいことあるかも。",
+    "小吉：フータが展示を磨いてくれました。気分もスッキリ。",
+    "吉：まめきち・つぶきちが元気に挨拶してくれました。",
+    "末吉：ジョニーが浜辺で寝ています。のんびりいこう。",
+    "凶：ハチに刺されないように気をつけてね。",
+    "大吉：推し住民に会える予感がします！",
+    "中吉：今日はベルが貯まりやすい日かも。",
+    "小吉：海の幸がよく取れそうな気がします。",
+    "吉：離島ガチャで良い出会いがあるかも。",
+    "末吉：のんびり島時間で過ごすと吉。",
+    "大吉：イルカショーが最高に楽しめる一日になりそう！"
+  ];
+  var r = Math.floor(Math.random() * list.length);
+  alert(list[r]);
+}
+</script>
+ 
+<!-- 時計フォーム -->
+<form name="myclockform">
+<input name="clock" size="30">
+</form>
+ 
+<!-- スクロールテキスト -->
+<form name="f_scroll">
+<input name="t_scroll" size="70">
+</form>
+ 
+<div align="center">
+<h1><font color="#4fc3f7">マリンワールド × どうぶつの森<br>コラボフォトレポート</font></h1>
+</div>
+ 
+<div align="center">
+<font size="4">夏休みに訪れたマリンワールド海の中道での<br>
+  「どうぶつの森」コラボイベントの様子を紹介します！</font>
+</div>
+ 
+<br><br>
+ 
+<!-- 公式サイトへ飛ぶボタン -->
+<div align="center">
+<form>
+<input type="button" class="button-ac" value="マリンワールド公式サイトへ" 
+           onclick="window.open('https://marine-world.jp/')">
+</form>
+</div>
+ 
+<br><br>
+ 
+<!-- 写真スライドショー（入口） -->
+ <div align="center">
+  <h2><font color="#0288d1">どうぶつの森コラボ入口</font></h2>
+
+  <!-- 表示画像（マウスオーバーなし） -->
+  <img id="entrance" src="img/a1.jpg" width="60%">
+
+  <br>
+  <font size="3">▲ 入口からたぬきち・しずえがお出迎え！🍃🍵</font>
+
+  <!-- 切り替えボタン -->
+  <br><br>
+  <input type="button" class="button-ac" value="写真①" onclick="changeEntrance('img/a1.jpg')">
+  <input type="button" class="button-ac" value="写真②" onclick="changeEntrance('img/a8.jpg')">
+  <input type="button" class="button-ac" value="写真③" onclick="changeEntrance('img/a9.jpg')">
+</div>
+
+<br><br>
+ 
+<!-- 展示 -->
+<div align="center">
+<h2><font color="#0288d1">実際の展示の様子‥</font></h2>
+<img id="exhibit" src="img/a2.jpg" width="60%"
+       onMouseOver="this.src='img/a10.jpg'"
+       onMouseOut="this.src='img/a2.jpg'">
+<br>
+<font size="3">▲ ゲームでもおなじみの博物館館長フータによる解説を取り入れた展示🦉</font>
+</div>
+ 
+<br><br>
+ 
+<!-- 大水槽 -->
+<div align="center">
+<h2><font color="#0288d1">大水槽</font></h2>
+<img src="img/a3.jpg" width="60%">
+<br>
+<font size="3">▲ どうぶつの森とのコラボではないけど‥<br>圧倒される大迫力の大水槽🦈</font>
+</div>
+ 
+<br><br>
+ 
+<!-- スタンプラリー -->
+<div align="center">
+<h2><font color="#0288d1">Let's 生きものさがし</font></h2>
+<img src="img/a4.jpg" width="60%">
+<br>
+<font size="3">▲ 館内を巡ってカードに描かれた生きものを探す🔍<br>マリンワールド内にいない生きものがいるよ！</font>
+</div>
+ 
+<br><br>
+ 
+<!-- イルカショー -->
+<div align="center">
+<h2><font color="#0288d1">見れたらラッキー!イルカショー練習</font></h2>
+<img src="img/a5.jpg" width="60%">
+<br>
+<font size="3">▲ 大人気のイルカショー…<br>の練習をもしかしたら見れるかも🐬</font>
+</div>
+ 
+<br><br>
+ 
+<!-- クラゲ展示 -->
+<div align="center">
+<h2><font color="#0288d1">ずっと見れちゃうクラゲ水槽</font></h2>
+<img id="jelly" src="img/a6.jpg" width="60%"
+       onMouseOver="this.src='img/a11.jpg'"
+       onMouseOut="this.src='img/a6.jpg'">
+<br>
+<font size="3">▲ 涼しげで幻想的なクラゲがぷかぷか🪼</font>
+</div>
+ 
+<br><br>
+ 
+<!-- ジョニー -->
+<div align="center">
+<h2><font color="#0288d1">ゲームで何度も見た光景！！</font></h2>
+<img src="img/a7.jpg" width="60%">
+<br>
+<font size="3">▲ 浜辺で打ち上げられているおなじみのジョニーが現実にも⚓</font>
+</div>
+ 
+<br><br>
+ 
+<!-- おみくじ -->
+<div align="center">
+<form>
+<input type="button" class="button-ac" value="どうぶつの森おみくじ" onClick="omikuji()">
+</form>
+</div>
+ 
+<br><br>
+
+ <script>
+document.addEventListener("mousemove", function(e) {
+  var cursor = document.getElementById("cursorImg");
+  cursor.style.left = (e.pageX + 10) + "px";
+  cursor.style.top  = (e.pageY + 10) + "px";
+});
+</script>
+
+<script>
+var currentEntrance = "img/a1.jpg";
+function changeEntrance(imgPath) {
+  var entrance = document.getElementById("entrance");
+  entrance.src = imgPath;
+  currentEntrance = imgPath;
+}
+</script>
+
+<br><br>
+
+</body>
+</html>
